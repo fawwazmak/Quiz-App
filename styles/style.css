@@ -53,9 +53,36 @@ body {
     position: relative;
 }
 
+#question-container {
+    display: none;
+}
+
+#score {
+    display: none;
+}
+
 section {
     width: 60%;
     background-color: coral;
     padding: 20px;
     border-radius: 10px;
 } 
+
+#welcome-container {
+
+}
+
+#welcome-container button {
+    border: none;
+    background-color: olive;
+    padding-block: 10px;
+    padding-inline: 25px;
+    margin-top: 10px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+#welcome-container button:hover {
+    background-color: rgb(151, 151, 29);
+    color: rgb(208, 208, 208);
+}
