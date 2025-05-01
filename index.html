@@ -7,7 +7,43 @@
     <title>A quiz app</title>
 </head>
 <body>
+    <section id="welcome-container">
+        <h1>Welcome!</h1>
+        <p>Each question has four options with just a correct answer. Note: once you answer as been choosen, you can go back to the question. A timer is 10 seconds per question. Good luck!</p>
+
+        <button>Start</button>
+    </section>
+
+    <section id="question-container">
+        <div id="options">
+            <div class="option">
+                <p>Osun</p>
+            </div>
+
+            <div class="option">
+                <p>Abuja</p>
+            </div>
+
+            <div class="option">
+                <p>Zamfara</p>
+            </div>
+
+            <div class="option">
+                <p>Nasarawa</p>
+            </div>
+        </div>
+    </section>
     
+
+    <section>
+        <h1>Good job</h1>
+        <p>Your Score is</p>
+        <div id="percent-container">
+            <div id="percent"></div>
+        </div>
+        <hr>
+    </section>
+
     <script src="/script/index.js"></script>
 </body>
 </html>
