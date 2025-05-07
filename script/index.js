@@ -4,7 +4,7 @@ let questions = [
         {optn: "Ramen", status: "right"},
         {optn: "Yagami", status: "wrong"},
         {optn: "inosuke", status: "wrong"},
-        {optn: "hashira", status: "wrong"},
+        {optn: "Zenitsu", status: "wrong"},
     ]},
     {shape: "square", question: "Who is the main actor of Death note?", options: [
         {optn: "Tanjiro", status: "wrong"},
@@ -42,20 +42,66 @@ let questions = [
         {optn: "hashira", status: "wrong"},
     ]},
 ];
-
+let startQuiz = document.getElementById("start");
 let questionSpace = document.getElementById("question-container");
+let scoreSect = document.getElementById("score-sect")
+let title = document.getElementById("question");
+let mainScore = document.getElementById("main-score");
+let scorePercent = document.getElementById("percent");
+let x = 0;
+let score = 0;
+let showTime = document.getElementById("timer")
+
+startQuiz.addEventListener("click", () => {
+    document.getElementById("welcome-container").style.display = "none";
+    questionSpace.style.display = "block";
+    showQuestions();
+})
 
 
-for (let i = 0; i < questions.length; i++) {
-    const title = document.createElement('h1');
-    const optionsContainer = document.createElement("div");
-    let options = questions[i].options.map(option => `<div class="option"><p>${option.optn}</p></div>`).join('');
-    optionsContainer.innerHTML = `${options}`;
 
-    title.textContent = questions[i].question;
-    title.className = 'child';
-    questionSpace.appendChild(title);
 
-    questionSpace.appendChild(optionsContainer);
-    optionsContainer.id = "options"
+function showQuestions() {
+    const optionsContainer = document.getElementById("options");
+    optionsContainer.innerHTML = ""; 
+    const currentQuestion = questions[x];
+    title.textContent = currentQuestion.question;
+
+    let timer;
+
+    function handleAnswer(optn) {
+        clearTimeout(timer);
+        if (x < questions.length) {
+            if (optn && optn.status === "right") {
+                score++;
+            }
+            x++;
+
+            if (x < questions.length) {
+                showQuestions(); 
+            } else {
+                questionSpace.style.display = "none";
+                scoreSect.style.display = "block";
+                percent = (score / questions.length) * 100;
+                mainScore.innerText = `${score} / ${questions.length} ==> ${percent.toFixed(1)}%`;
+            }
+        }
+        console.log(x, score);
+        if (!optn) {
+            console.log("No answer selected – timeout");
+        }
+    }
+
+    
+    currentQuestion.options.forEach(optn => {
+        let option = document.createElement("div");
+        option.id = "option-div";
+        option.innerHTML = optn.optn;
+        optionsContainer.appendChild(option);
+
+        option.addEventListener("click", () => handleAnswer(optn));
+    });
+
+    timer = setTimeout(() => handleAnswer(null), 1000);
+    
 }
