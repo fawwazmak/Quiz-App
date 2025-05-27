@@ -43,23 +43,34 @@ let questions = [
     ]},
 ];
 let startQuiz = document.getElementById("start");
+let welcomeSpace = document.getElementById("welcome-container");
 let questionSpace = document.getElementById("question-container");
 let scoreSect = document.getElementById("score-sect")
 let title = document.getElementById("question");
 let mainScore = document.getElementById("main-score");
 let scorePercent = document.getElementById("percent");
+let scoreComment = document.getElementById("comment")
 let x = 0;
 let score = 0;
 let showTime = document.getElementById("timer")
+let restart = document.getElementById("restart");
 
-startQuiz.addEventListener("click", () => {
-    document.getElementById("welcome-container").style.display = "none";
+startQuiz.addEventListener("click", beginQuiz);
+restart.addEventListener("click", beginQuiz)
+document.addEventListener("keydown", keyHandler)
+
+
+function beginQuiz() {
+    welcomeSpace.style.display = "none";
     questionSpace.style.display = "block";
+    scoreSect.style.display = "none";
     showQuestions();
-})
+    document.removeEventListener("keydown", keyHandler)
+}
 
-
-
+function keyHandler(e) {
+    if(e.key === "Enter") beginQuiz();
+}
 
 function showQuestions() {
     const optionsContainer = document.getElementById("options");
@@ -68,6 +79,19 @@ function showQuestions() {
     title.textContent = currentQuestion.question;
 
     let timer;
+    let timeLeft = 10;
+    showTime.innerText = timeLeft;
+    showTime.style.width = `${(timeLeft / 10) * 100}%`;
+
+
+    const countdownInterval = setInterval(() => {
+        timeLeft--;
+        showTime.innerText = timeLeft;
+        showTime.style.width = `${(timeLeft / 10) * 100}%`;
+        if (timeLeft <= 0) {
+            clearInterval(countdownInterval);
+        }
+    }, 1000);
 
     function handleAnswer(optn) {
         clearTimeout(timer);
@@ -84,6 +108,17 @@ function showQuestions() {
                 scoreSect.style.display = "block";
                 percent = (score / questions.length) * 100;
                 mainScore.innerText = `${score} / ${questions.length} ==> ${percent.toFixed(1)}%`;
+                scorePercent.style.height = `${percent}%`
+
+                if (percent < 50) {
+                    scoreComment.innerText = "Try Again"
+                } else if (percent >= 50 && percent < 70) {
+                    scoreComment.innerText = "Good Job, you can do better"
+                } else {
+                    scoreComment.innerText = "Excellent"
+                }
+                x = 0;
+                score = 0;
             }
         }
         console.log(x, score);
@@ -102,6 +137,5 @@ function showQuestions() {
         option.addEventListener("click", () => handleAnswer(optn));
     });
 
-    timer = setTimeout(() => handleAnswer(null), 1000);
-    
+    timer = setTimeout(() => handleAnswer(null), 10000);
 }
