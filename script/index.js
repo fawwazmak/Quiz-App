@@ -1,45 +1,52 @@
 let questions = [
-    {shape: "square", question: "Who is the main actor of demon slayer?", options: [
-        {optn: "Tanjiro", status: "wrong"},
-        {optn: "Ramen", status: "right"},
+    {question: "Who is the main actor of demon slayer?", options: [
+        {optn: "Tanjiro", status: "right"},
+        {optn: "Ramen", status: "wrong"},
         {optn: "Yagami", status: "wrong"},
         {optn: "inosuke", status: "wrong"},
         {optn: "Zenitsu", status: "wrong"},
     ]},
-    {shape: "square", question: "Who is the main actor of Death note?", options: [
+    {question: "Who is the main actor of Death note?", options: [
         {optn: "Tanjiro", status: "wrong"},
-        {optn: "Ramen", status: "right"},
-        {optn: "Yagami", status: "wrong"},
+        {optn: "Ramen", status: "wrong"},
+        {optn: "Yagami", status: "right"},
         {optn: "inosuke", status: "wrong"},
         {optn: "hashira", status: "wrong"},
     ]},
-    {shape: "square", question: "Which state is the capital of Nigeria?", options: [
-        {optn: "Tanjiro", status: "wrong"},
-        {optn: "Ramen", status: "right"},
-        {optn: "Yagami", status: "wrong"},
-        {optn: "inosuke", status: "wrong"},
-        {optn: "hashira", status: "wrong"},
+    {question: "Which state is the capital of Nigeria?", options: [
+        {optn: "Osun", status: "wrong"},
+        {optn: "Lagos", status: "wrong"},
+        {optn: "Abuja", status: "right"},
+        {optn: "Kwara", status: "wrong"},
+        {optn: "Kebbi", status: "wrong"},
     ]},
-    {shape: "square", question: "When was Prophet Muhammad given birth to?", options: [
-        {optn: "Tanjiro", status: "wrong"},
-        {optn: "Ramen", status: "right"},
-        {optn: "Yagami", status: "wrong"},
-        {optn: "inosuke", status: "wrong"},
-        {optn: "hashira", status: "wrong"},
+    {question: "When was Prophet Muhammad given birth to?", options: [
+        {optn: "520 AD", status: "wrong"},
+        {optn: "570 AD", status: "right"},
+        {optn: "550 AD", status: "wrong"},
+        {optn: "140 AD", status: "wrong"},
+        {optn: "563 AD", status: "wrong"},
     ]},
-    {shape: "square", question: "What was Naruto's favorite food?", options: [
-        {optn: "Tanjiro", status: "wrong"},
+    {question: "What was Naruto's favorite food?", options: [
+        {optn: "Beans", status: "wrong"},
         {optn: "Ramen", status: "right"},
-        {optn: "Yagami", status: "wrong"},
-        {optn: "inosuke", status: "wrong"},
-        {optn: "hashira", status: "wrong"},
+        {optn: "Tofu", status: "wrong"},
+        {optn: "Pizza", status: "wrong"},
+        {optn: "Rice", status: "wrong"},
     ]},
-    {shape: "square", question: "Who is the main actor of demon slayer?", options: [
-        {optn: "Tanjiro", status: "wrong"},
-        {optn: "Ramen", status: "right"},
-        {optn: "Yagami", status: "wrong"},
+    {question: "Who is the main Villian of demon slayer?", options: [
+        {optn: "Muzan", status: "right"},
+        {optn: "Hashira", status: "wrong"},
+        {optn: "Nezuko", status: "wrong"},
         {optn: "inosuke", status: "wrong"},
-        {optn: "hashira", status: "wrong"},
+        {optn: "Zenitsu", status: "wrong"},
+    ]},
+    {question: "Who is the Flame Hashira featured in the movie Demon slayer?", options: [
+        {optn: "Tomioka", status: "wrong"},
+        {optn: "Kocho", status: "wrong"},
+        {optn: "Rengoku", status: "right"},
+        {optn: "Uzui", status: "wrong"},
+        {optn: "Zenitsu", status: "wrong"},
     ]},
 ];
 let startQuiz = document.getElementById("start");
