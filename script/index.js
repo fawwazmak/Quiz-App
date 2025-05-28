@@ -56,15 +56,17 @@ let scoreSect = document.getElementById("score-sect")
 let title = document.getElementById("question");
 let mainScore = document.getElementById("main-score");
 let scorePercent = document.getElementById("percent");
-let scoreComment = document.getElementById("comment")
+let scoreComment = document.getElementById("comment");
 let x = 0;
 let score = 0;
 let showTime = document.getElementById("timer")
 let restart = document.getElementById("restart");
+let switchMode = document.getElementById("switch-mode");
+let crrntQues = document.getElementById("progress")
 
 startQuiz.addEventListener("click", beginQuiz);
-restart.addEventListener("click", beginQuiz)
-document.addEventListener("keydown", keyHandler)
+restart.addEventListener("click", beginQuiz);
+document.addEventListener("keydown", keyHandler);
 
 
 function beginQuiz() {
@@ -84,17 +86,22 @@ function showQuestions() {
     optionsContainer.innerHTML = ""; 
     const currentQuestion = questions[x];
     title.textContent = currentQuestion.question;
+    crrntQues.innerText = `${x} of ${questions.length}`
 
     let timer;
     let timeLeft = 10;
     showTime.innerText = timeLeft;
-    showTime.style.width = `${(timeLeft / 10) * 100}%`;
 
 
     const countdownInterval = setInterval(() => {
         timeLeft--;
-        showTime.innerText = timeLeft;
-        showTime.style.width = `${(timeLeft / 10) * 100}%`;
+        function formatTime(seconds) {
+            const mins = String(Math.floor(seconds / 60)).padStart(2, '0');
+            const secs = String(seconds % 60).padStart(2, '0');
+            return `${mins}:${secs}`;
+        }
+        
+        showTime.innerText = formatTime(timeLeft);
         if (timeLeft <= 0) {
             clearInterval(countdownInterval);
         }
@@ -146,3 +153,12 @@ function showQuestions() {
 
     timer = setTimeout(() => handleAnswer(null), 10000);
 }
+
+
+switchMode.addEventListener("click", () => {
+    document.body.classList.toggle("body-dark");
+    startQuiz.classList.toggle("start-dark");
+    showTime.classList.toggle("timer-dark");
+    restart.classList.toggle("timer-dark");
+    scorePercent.classList.toggle("percent-dark")
+})

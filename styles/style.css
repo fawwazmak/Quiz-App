@@ -13,6 +13,12 @@ body {
     min-height: 100vh;
 }
 
+.body-dark {
+    background-color: rgb(0, 0, 68);
+    color: white;
+}
+
+
 #option-div {
     background-color: teal;
     border-radius: 5px;
@@ -20,6 +26,10 @@ body {
     padding-block: 15px;
     transition: all;
     transition-duration: 0.5s;
+}
+
+.option-div-dark {
+    background-color: rgb(0, 31, 31);
 }
 
 /* .option:hover {
@@ -48,6 +58,10 @@ body {
     margin-left: 10px;
 }
 
+.percent-dark {
+    background-color: rgb(0, 0, 53) !important;
+}
+
 #percent-container {
     margin-top: 10px;
     background-color: rgba(0, 128, 0, 0.308);
@@ -56,12 +70,22 @@ body {
     position: relative;
 }
 
+
 #question-container {
     display: none;
 }
 
 #restart {
     cursor: pointer;
+    background-color: yellow;
+    position: absolute;
+    color: black;
+    top: 10px;
+    left: 15px;
+    border-radius: 5px;
+    padding-inline: 10px;
+    padding-block: 5px;
+    font-size: 50px;
 }
 
 #score-sect {
@@ -75,23 +99,36 @@ section {
     border-radius: 10px;
 }
 
-#timer, #restart {
+#switch-mode {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    cursor: pointer;
+}
+
+#timer-and-progress {
     background-color: yellow;
     position: absolute;
+    color: black;
     top: 10px;
-    right: 15px;
+    left: 5px;
     border-radius: 5px;
     padding-inline: 10px;
     padding-block: 5px;
     font-size: 50px;
+    display: flex;
+    width: 95%;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.timer-dark {
+    background-color: rgb(83, 83, 0) !important;
+    color: white !important;
 }
 
 
-#welcome-container {
-
-}
-
-#welcome-container button {
+#start {
     border: none;
     background-color: olive;
     padding-block: 10px;
@@ -99,6 +136,11 @@ section {
     margin-top: 10px;
     border-radius: 10px;
     cursor: pointer;
+}
+
+.start-dark {
+    background-color: rgb(37, 37, 0);
+    color: white;
 }
 
 #welcome-container button:hover {
@@ -112,6 +154,9 @@ section {
     }
     #score-sect {
         text-align: center;
+    }
+    #timer-and-progress {
+        left: 0;
     }
 }
 
